@@ -6,7 +6,7 @@ pipeline {
         stage('Clone Repository') {
             steps {
                 echo "Cloning of the repository to be initiated!"
-                git https://github.com/iddhawan01/datalocaltogithub.git
+                git branch: 'main', url: 'https://github.com/iddhawan01/datalocaltogithub.git'
                 echo "Cloning successfully!"    
             }
         }
