@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone Repository') {
+            steps {
+                git 'https://github.com/iddhawan01/jenkins-devops-project.git'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                sh '''
+                cd 03-docker-build
+                docker build -t my-first-image .
+                '''
+            }
+        }
+    }
+
+    post {
+        success {
+            echo "Use Case 3: Docker image built successfully!"
+        }
+    }
+}
