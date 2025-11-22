@@ -1,17 +1,21 @@
+
 pipeline {
     agent any
 
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/iddhawan01/jenkins-devops-project.git'
+                echo "Cloning of the repository to be initiated!"
+                git https://github.com/iddhawan01/datalocaltogithub.git
+                echo "Cloning successfully!"    
             }
         }
 
         stage('Build Docker Image') {
             steps {
                 sh '''
-                cd 03-docker-build
+                cd docker-build
+                echo "Docker Build to be initiated!"
                 docker build -t my-first-image .
                 '''
             }
